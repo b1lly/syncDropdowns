@@ -16,7 +16,7 @@
       
       /**
        * Update the options of all the dropdowns 
-       * based on the option that was selected (exclude selected dropdown)
+       * based on the option that was selected (exclude changed dropdown)
        * 
        * @param {Integer} selectedIndex
        * @param {String} selectedValue
