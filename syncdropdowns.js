@@ -8,11 +8,11 @@
  * 
  */
 (function($) {
-	$.fn.syncDropdowns = function() {
-	  var selectedOptions = {}; // Used to store a history of dropdown selected options
+  $.fn.syncDropdowns = function() {
+    var selectedOptions = {}; // Used to store a history of dropdown selected options
     var elms = this; // Collection of the dropdowns to sync
 	  
-	  // Sync only the selectors that this was initiated on
+    // Sync only the selectors that this was initiated on
     return this.each(function(selectedIndex) {
       
       /**
