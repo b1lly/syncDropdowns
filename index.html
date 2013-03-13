@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="syncdropdowns.js"></script>
+    <style type="text/css">
+      option:disabled { display: none; }
+    </style>
+	</head>
+	<body>
+		<select class="mydropdown">
+			<option>Select One</option>
+			<option value="1">Option 1</option>
+			<option value="2">Option 2</option>
+			<option value="3">Option 3</option>
+		</select>				
+		<select class="mydropdown">
+			<option>Select One</option>
+			<option value="1">Option 1</option>
+			<option value="2">Option 2</option>
+			<option value="3">Option 3</option>
+		</select>		
+		<select class="mydropdown">
+			<option>Select One</option>
+			<option value="1">Option 1</option>
+			<option value="2">Option 2</option>
+			<option value="3">Option 3</option>
+		</select>
+		<script type="text/javascript">
+      $('.mydropdown').syncDropdowns();
+		</script>
+	</body>
+</html>
