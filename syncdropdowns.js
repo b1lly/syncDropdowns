@@ -40,7 +40,6 @@
           var addElement = $(this).find('option[value="' + selectedValue + '"]').removeAttr('disabled');
         })
       }      
-      
 
       // Listen for the change of options and update
       // the other dropdowns based on the selection
@@ -63,5 +62,5 @@
         disableSelected(selectedIndex, selectedValue);
       });  
     });
-	}
+  }
 })(jQuery);
