@@ -6,7 +6,7 @@
  *  
  * @usage $('selector').syncDropdowns();
  */
-(function($) {
+;(function($) {
   $.fn.syncDropdowns = function() {
     var selectedOptions = {}, // Used to store a history of selected options
         $elms = this; // Collection of the dropdowns (elements) to sync
@@ -36,7 +36,7 @@
           // Remove the option that was selected from the changed dropdown     
           $(this).find('option[value="' + selectedValue + '"]').attr('disabled', 'disabled');
         });
-      }  
+      };
 
       // Listen for the change of options and update
       // the dropdowns based on the users selection
@@ -59,5 +59,5 @@
         };
       });  
     });
-  }
+  };
 })(jQuery);
