@@ -16,50 +16,49 @@
     return this.each(function(selectedIndex) {
       
       /**
-       * Disable the options that are already selected
-       * @param {Object} selectedIndex
-       * @param {Object} selectedValue
+       * Update the options of all the dropdowns (exclude selected)
+       * based on the option that was selected
+       * 
+       * @param {Integer} selectedIndex
+       * @param {String} selectedValue
+       * @param {String} previousValue
        */
-      var disableSelected = function(selectedIndex, selectedValue) {
+      var updateDropdowns = function(selectedIndex, selectedValue, previousValue) {
         elms.each(function(index) {
-          if (selectedIndex == index) return;          
+          if (selectedIndex == index) {
+            return;
+          }          
           
-          var removeElement = $(this).find('option[value="' + selectedValue + '"]');
-          if (removeElement) removeElement.attr('disabled', 'disabled')
+          // Add options back if it's no longer selected by another dropdown
+          if (previousValue) {
+            $(this).find('option[value="' + previousValue + '"]').removeAttr('disabled');
+          }
+          
+          // Remove the selected option from other dropdowns     
+          $(this).find('option[value="' + selectedValue + '"]').attr('disabled', 'disabled');
         });
-      }
-      
-      /**
-       * Enable the options that are deselected on 
-       * the other dropdowns
-       * @param {Object} selectedValue
-       */
-      var enableDeselected = function(selectedValue) {
-        elms.each(function(index) {
-          if (selectedIndex == index) return;          
-          var addElement = $(this).find('option[value="' + selectedValue + '"]').removeAttr('disabled');
-        })
-      }      
+      }  
 
       // Listen for the change of options and update
       // the other dropdowns based on the selection
       $(this).change(function() {
-        var selectedText = $(this).find(':selected').text();
-        var selectedValue = $(this).val();
+        var selectedText = $(this).find(':selected').text(),
+            selectedValue = $(this).val(),
+            previousValue;
         
         // Check if the selected dropdown had a previous value
         // and then refresh the other dropdowns accordingly
         if (selectedOptions[selectedIndex]) {
-          enableDeselected(selectedOptions[selectedIndex].value);
-        }
+          previousValue = selectedOptions[selectedIndex].value;
+        }        
+        updateDropdowns(selectedIndex, selectedValue, previousValue);
         
         // Keep a history of the dropdowns selected options
         selectedOptions[selectedIndex] = { 
           value : selectedValue,
           text : selectedText
         };
-        
-        disableSelected(selectedIndex, selectedValue);
+
       });  
     });
   }
